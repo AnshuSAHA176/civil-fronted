@@ -204,14 +204,36 @@ export default function ComplaintDetails() {
                 <span className="detail-panel-count"><ImageIcon size={15} /> {images.length}</span>
               </div>
               <div className="complaint-image-grid">
-                {images.map((image) => {
-                  const src = mediaUrl(image?.image)
-                  if (!src) return null
-                  return (
-                    <a key={image?.id || src} href={src} target="_blank" rel="noreferrer" className="complaint-image-link">
-                      <img src={src} alt="Complaint evidence" loading="lazy" />
-                    </a>
-                  )
+                {images.map((image, index) => {
+  const imageUrl =
+    typeof image === 'string'
+      ? image
+      : image?.image
+
+  const src = mediaUrl(imageUrl)
+
+  if (!src) return null
+
+  return (
+    <a
+      key={image?.id || `${src}-${index}`}
+      href={src}
+      target="_blank"
+      rel="noreferrer"
+      className="complaint-image-link"
+    >
+      <img
+        src={src}
+        alt={`Complaint evidence ${index + 1}`}
+        loading="lazy"
+        onError={(event) => {
+          console.error('Failed to load complaint image:', src)
+          event.currentTarget.style.display = 'none'
+        }}
+      />
+    </a>
+  )
+
                 })}
               </div>
             </section>
