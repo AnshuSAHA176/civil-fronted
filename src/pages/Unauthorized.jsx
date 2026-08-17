@@ -1,0 +1,1 @@
+export default function Unauthorized() { return <section className="placeholder-page"><p className="eyebrow">403</p><h1>Access denied</h1><p>You do not have permission to access this area.</p></section> }

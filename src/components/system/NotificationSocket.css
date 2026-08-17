@@ -1,0 +1,37 @@
+.civicai-live-toast {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 9999;
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  width: min(360px, calc(100vw - 32px));
+  padding: 14px 16px;
+  color: var(--text, #eef5ee);
+  text-align: left;
+  background: rgba(8, 32, 25, .96);
+  border: 1px solid rgba(201, 243, 90, .28);
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.28);
+  backdrop-filter: blur(16px);
+  cursor: pointer;
+  animation: civicai-toast-in .25s ease-out;
+}
+.civicai-live-toast-dot {
+  width: 9px;
+  height: 9px;
+  margin-top: 4px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #c9f35a;
+  box-shadow: 0 0 14px rgba(201,243,90,.7);
+}
+.civicai-live-toast strong,
+.civicai-live-toast small { display: block; }
+.civicai-live-toast strong { font-size: 13px; }
+.civicai-live-toast small { margin-top: 4px; color: #9cafa6; color: #9cafa6; font-size: 11px; line-height: 1.45; }
+@keyframes civicai-toast-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
